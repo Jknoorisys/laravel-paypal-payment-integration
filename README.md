@@ -19,28 +19,34 @@
     <li><h5>Install Packages for Paypal Payment Gateway Using Composer</h5></li>
         <p>Run the following command.</p>
         <p><i>composer require srmklive/paypal:~3.0</i></p>
+    <li><h5>Create PayPal Account</h5></li>
+        <p>After installing paypal package, we need client_id and secret_key for paypal integration, so we need to enter in paypal developer mode and create new sandbox account for the same. After login in paypal you need to get the client_id and secret_key as shown below. before getting client_id and secret_key we need to create application. So, check the screenshot below and build an app. Login to the Developer Dashboard.</p>
+        <p>Click Create Apps.</p>
+        <img src="https://miro.medium.com/v2/resize:fit:720/0*7ZGcg-bK_Q0ug28T" alt="img">
+        <p>Fill in the name of the application that was created.</p>
+        <img src="https://miro.medium.com/v2/resize:fit:720/0*QdHZbMTM4hnxHtkk" alt="img">
+        <p>Then you will get the client key and secret key that will be used in the application.</p>
+        <img src="https://miro.medium.com/v2/resize:fit:720/0*s0MdGxcaTC4mo2ys" alt="img">    
+    <li><h5>Configure the package</h5></li>
+        <p>After the package installation is complete, you open your project and add the key and secret key that you got in the .env file.</p>
+        <p>
+        PAYPAL_MODE=sandbox
+        PAYPAL_SANDBOX_CLIENT_ID=AXELAz06GFLR.............................QNu7zyjuYpFLu1g
+        PAYPAL_SANDBOX_CLIENT_SECRET=EA9dinW1.............................PUzgVQCz7fK4tqe1-jLZCyHzZ0tDTRAx-6qJdIY933Q
+        </p>
 </ol>
 
 
-3. Create PayPal credentials
-After installing paypal package, we need client_id and secret_key for paypal integration, so we need to enter in paypal developer mode and create new sandbox account for the same. After login in paypal you need to get the client_id and secret_key as shown below. before getting client_id and secret_key we need to create application. So, check the screenshot below and build an app. Login to the Developer Dashboard.
-
-Click Create Apps.
-
-<img src="https://miro.medium.com/v2/resize:fit:720/0*7ZGcg-bK_Q0ug28T" alt="img">
-Fill in the name of the application that was created.
 
 
-Then you will get the client key and secret key that will be used in the application.
 
 
-4. Configure the package
-After the package installation is complete, you open your project and add the key and secret key that you got in the .env file.
 
-PAYPAL_MODE=sandbox
-#Paypal sandbox credential
-PAYPAL_SANDBOX_CLIENT_ID=AXELAz06GFLR.............................QNu7zyjuYpFLu1g
-PAYPAL_SANDBOX_CLIENT_SECRET=EA9dinW1.............................PUzgVQCz7fK4tqe1-jLZCyHzZ0tDTRAx-6qJdIY933Q
+
+4. 
+
+
+
 If you want to customize the package’s default configuration options, run the vendor:publish command below.
 
 php artisan vendor:publish --provider "Srmklive\PayPal\Providers\PayPalServiceProvider"
