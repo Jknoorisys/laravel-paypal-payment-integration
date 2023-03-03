@@ -10,19 +10,19 @@
     <li> Run the app </li>
 </ul>
 
-1. Create a new project
-Create a new project with the command as below.
+<ol>
+    <li>Create a new project</li>
+    <p>Create a new project with the command as below.</p>
+    <p>composer create-project laravel/laravel-paypal-integration --jet</p>
+    <p>After the new project has been created, go to your project directory.</p>
+    <p>cd paypal</p>
+    
+    <li>Install Packages for Paypal Payment Gateway Using Composer</li>
+    <p>Run the following command.</p>
+    <p>composer require srmklive/paypal:~3.0</p>
+</ol>
 
-composer create-project laravel/laravel paypal --prefer-dist
-After the new project has been created, go to your project directory.
 
-cd paypal
-2. Install Packages for Paypal Payment Gateway Using Composer
-Run the following command.
-
-we will install Laravel-Paypal for laravel 6,7, & 8
-
-composer require srmklive/paypal:~3.0
 3. Create PayPal credentials
 After installing paypal package, we need client_id and secret_key for paypal integration, so we need to enter in paypal developer mode and create new sandbox account for the same. After login in paypal you need to get the client_id and secret_key as shown below. before getting client_id and secret_key we need to create application. So, check the screenshot below and build an app. Login to the Developer Dashboard.
 
