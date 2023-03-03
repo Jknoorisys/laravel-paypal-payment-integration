@@ -1,10 +1,12 @@
 <h1>Laravel Paypal Payment Integration</h1>
-Follow the steps below:
+<h5>Follow the steps below:</h5>
+<ul>
+    <li> Create New Project </li>
+    <li> Install Packages for Paypal Payment Gateway Using Composer </li>
+    <li> Create PayPal credentials . fund account </li>
+    <li> Configure the package </li>
+    <li> Create Routes </li>
+    <li> Create blade file to create payment button </li>
+    <li> Run the app </li>
+</ul>
 
-Create New Project
-Install Packages for Paypal Payment Gateway Using Composer
-Create PayPal credentials . fund account
-Configure the package
-Create Routes
-Create blade file to create payment button
-Run the app
