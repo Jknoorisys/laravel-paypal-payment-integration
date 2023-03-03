@@ -28,7 +28,7 @@ After installing paypal package, we need client_id and secret_key for paypal int
 
 Click Create Apps.
 
-
+<img src="https://miro.medium.com/v2/resize:fit:720/0*7ZGcg-bK_Q0ug28T" alt="img">
 Fill in the name of the application that was created.
 
 
