@@ -2,8 +2,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 <div class="container" style="padding-top: 50px; padding-bottom: 50px;">
-<h3>Welcome Back&nbsp;{{ auth()->user()->name}}!</h3>
-
     <div class="row">
         @if (Session::has('success'))
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
