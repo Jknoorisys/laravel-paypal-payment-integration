@@ -16,7 +16,6 @@
     <p>composer create-project laravel/laravel-paypal-integration --jet</p>
     <p>After the new project has been created, go to your project directory.</p>
     <p>cd paypal</p>
-    
     <li>Install Packages for Paypal Payment Gateway Using Composer</li>
     <p>Run the following command.</p>
     <p>composer require srmklive/paypal:~3.0</p>
