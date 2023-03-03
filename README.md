@@ -30,59 +30,29 @@
     <li><h5>Configure the package</h5></li>
         <p>After the package installation is complete, you open your project and add the key and secret key that you got in the .env file.</p>
         <p>
-        PAYPAL_MODE=sandbox
-        PAYPAL_SANDBOX_CLIENT_ID=AXELAz06GFLR.............................QNu7zyjuYpFLu1g
+        PAYPAL_MODE=sandbox<br>
+        PAYPAL_SANDBOX_CLIENT_ID=AXELAz06GFLR.............................QNu7zyjuYpFLu1g<br>
         PAYPAL_SANDBOX_CLIENT_SECRET=EA9dinW1.............................PUzgVQCz7fK4tqe1-jLZCyHzZ0tDTRAx-6qJdIY933Q
         </p>
+        <p>If you want to customize the package’s default configuration options, run the vendor:publish command below.</p>
+        <p><i>php artisan vendor:publish --provider "Srmklive\PayPal\Providers\PayPalServiceProvider"</i></p>
+        <img src="https://miro.medium.com/v2/resize:fit:640/0*78fimJBrscB_gjQx" alt="img">
+        <p>This will create a configuration file config/paypal.php with the details below, which you can modify.</p>
+        <img src="https://miro.medium.com/v2/resize:fit:720/0*KZjimfTUs0el7ZWL" alt="img">
+    <li><h5>Create Routes</h5></li>
+        <p>Now we need to create an application route that we will test the application test transaction on. Open the route/web.php application route file and add the new routes</p>
+        <p>Create Controller</p>
+        <p><i>php artisan make:controller PayPalController</i></p>
+    <li><h5>Create blade file to create payment button</h5></li>
+        <p>create a view that will direct to process the transaction. Create blade view resources/views/transaction.blade.php file</p>
+    <li><h5>Run the app</h5></li>
+        <p>Paypal integration complete. Now we need to make a transaction. Run the Laravel server using the Artisan command below.</p>
+        <p><i>php artisan serve</i></p>
+    <p>Thus this tutorial I provide, hopefully useful.</p>
+    <p>Thanks.</p>  
 </ol>
 
 
 
 
 
-
-
-
-4. 
-
-
-
-If you want to customize the package’s default configuration options, run the vendor:publish command below.
-
-php artisan vendor:publish --provider "Srmklive\PayPal\Providers\PayPalServiceProvider"
-
-This will create a configuration file config/paypal.php with the details below, which you can modify.
-
-
-5. Create Routes
-Now we need to create an application route that we will test the application test transaction on. Open the route/web.php application route file and add the following new route.
-
-<?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PayPalController;
-Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
-Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
-Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
-Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
-Create Controller
-After we create a route, then next we create a controller using php artisan.
-
-php artisan make:controller PayPalController
-
-6. Create blade file to create payment button
-We are going to create a view that will direct to process the transaction. Create blade view resources/views/transaction.blade.php file and add below code to it.
-
-7. Run the app
-Paypal integration complete. Now we need to make a transaction. Run the Laravel server using the Artisan command below.
-
-php artisan serve
-Open it with a url like below. To pay with a PayPal account, you need to create an account create sandbox account.
-
-http://localhost:8000/create-transaction
-
-click Pay, it will display the payment form.
-
-
-Thus this tutorial I provide, hopefully useful.
-
-Thanks.
