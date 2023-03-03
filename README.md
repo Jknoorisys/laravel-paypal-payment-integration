@@ -11,14 +11,14 @@
 </ul>
 
 <ol>
-    <li>Create a new project</li>
-    <p>Create a new project with the command as below.</p>
-    <p>composer create-project laravel/laravel-paypal-integration --jet</p>
-    <p>After the new project has been created, go to your project directory.</p>
-    <p>cd paypal</p>
-    <li>Install Packages for Paypal Payment Gateway Using Composer</li>
-    <p>Run the following command.</p>
-    <p>composer require srmklive/paypal:~3.0</p>
+    <li><h5>Create a new project</h5></li>
+        <p>Create a new project with the command as below.</p>
+        <p><i>composer create-project laravel/laravel-paypal-integration --jet</i></p>
+        <p>After the new project has been created, go to your project directory.</p>
+        <p><i>cd paypal</i></p>
+    <li><h5>Install Packages for Paypal Payment Gateway Using Composer</h5></li>
+        <p>Run the following command.</p>
+        <p><i>composer require srmklive/paypal:~3.0</i></p>
 </ol>
 
 
@@ -62,97 +62,7 @@ Create Controller
 After we create a route, then next we create a controller using php artisan.
 
 php artisan make:controller PayPalController
-We already have a controller in the directory app/Http/Controllers/PayPalController.php. Open it and add the code below.
 
-<?php
-namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use Srmklive\PayPal\Services\PayPal as PayPalClient;
-class PayPalController extends Controller
-{
-    /**
-     * create transaction.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createTransaction()
-    {
-        return view('transaction');
-    }
-    /**
-     * process transaction.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function processTransaction(Request $request)
-    {
-        $provider = new PayPalClient;
-        $provider->setApiCredentials(config('paypal'));
-        $paypalToken = $provider->getAccessToken();
-        $response = $provider->createOrder([
-            "intent" => "CAPTURE",
-            "application_context" => [
-                "return_url" => route('successTransaction'),
-                "cancel_url" => route('cancelTransaction'),
-            ],
-            "purchase_units" => [
-                0 => [
-                    "amount" => [
-                        "currency_code" => "USD",
-                        "value" => "1000.00"
-                    ]
-                ]
-            ]
-        ]);
-        if (isset($response['id']) && $response['id'] != null) {
-            // redirect to approve href
-            foreach ($response['links'] as $links) {
-                if ($links['rel'] == 'approve') {
-                    return redirect()->away($links['href']);
-                }
-            }
-            return redirect()
-                ->route('createTransaction')
-                ->with('error', 'Something went wrong.');
-        } else {
-            return redirect()
-                ->route('createTransaction')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
-        }
-    }
-    /**
-     * success transaction.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function successTransaction(Request $request)
-    {
-        $provider = new PayPalClient;
-        $provider->setApiCredentials(config('paypal'));
-        $provider->getAccessToken();
-        $response = $provider->capturePaymentOrder($request['token']);
-        if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            return redirect()
-                ->route('createTransaction')
-                ->with('success', 'Transaction complete.');
-        } else {
-            return redirect()
-                ->route('createTransaction')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
-        }
-    }
-    /**
-     * cancel transaction.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function cancelTransaction(Request $request)
-    {
-        return redirect()
-            ->route('createTransaction')
-            ->with('error', $response['message'] ?? 'You have canceled the transaction.');
-    }
-}
 6. Create blade file to create payment button
 We are going to create a view that will direct to process the transaction. Create blade view resources/views/transaction.blade.php file and add below code to it.
 
