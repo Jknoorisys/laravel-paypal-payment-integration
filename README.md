@@ -1,6 +1,6 @@
 <h1>Laravel Paypal Payment Integration</h1>
 
-h4>Steps to clone laravel project</h4>
+<h4>Steps to clone laravel project</h4>
 <ul>
     <li>Clone your project</li>
     <li>Go to the folder application using cd command on your cmd or terminal</li>
